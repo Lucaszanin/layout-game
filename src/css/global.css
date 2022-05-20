@@ -1,0 +1,162 @@
+body {
+    font-family: 'command', Courier, monospace;
+    background: var(--cor-secundaria);
+}
+
+body::before {
+    content: '';
+    background-image: url("../imagens/fundo.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
+
+main {
+    max-height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.header .logo img {
+    width: 250px;
+}
+
+.header .title {
+    text-align: center;
+    width: 100%;
+    color: var(--cor-titulo-fraco);
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    -webkit-text-stroke: 2px var(--cor-titulo-forte);
+}
+
+.character-selection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-selection .big-character {
+    text-align: center;
+    width: 30%;
+    height: 70vh;
+    position: relative;
+}
+
+.character-selection .big-character img {
+    height: 70vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.character-selection .big-character .name h2 {
+    color: var(--cor-padrao);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 27px;
+}
+
+.character-selection .big-character .name::before {
+    content: '';
+    width: 100%;
+    height: 15px;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+}
+
+.character-selection .big-character.character-player-1 .name::before {
+    background-color: var(--cor-azul-principal);
+}
+
+.character-selection .big-character.character-player-2 .name::before {
+    background-color: var(--cor-vermelha-principal);
+}
+
+.character-selection .character-list {
+    display: flex;
+    max-width: 600px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.character-selection .character-list .character {
+    border: 2px solid var(--cor-padrao);
+    background-color: var(--cor-padrao);
+    width: 30%;
+    height: 160px;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 5px;
+    position: relative;
+    transition: 0.15s ease-in-out;
+}
+
+.character-selection .character-list .character img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.character-selection .character-list .character.selected {
+    border: 2px solid var(--cor-azul-media);
+    animation: c-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.character-selection .character-list .character.character-player-2 {
+    border: 2px solid var(--cor-vermelha-fraca);
+    animation: c-glowing-red .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.character-selection .character-list .character:hover{
+    animation-direction: alternate;
+    transform: scale(1.07);
+    z-index: 2;
+}
+
+.character-selection .character-list .character.character-player-2:hover{
+    animation: c-glowing-red .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.character-selection .character-list .character .tag {
+    display: none;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    color: var(--cor-azul-media);
+    transition: opacity .3 ease-in-out;
+    animation: text-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.character-selection .character-list .character.selected .tag {
+    display: block;
+    animation: text-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.character-selection .character-list .character.character-player-2 .tag {
+    display: block;
+    animation: text-glowing-red .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
